@@ -25,7 +25,17 @@ def download_audio(query):
         }],
     }
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+ydl_opts = {
+    "format": "bestaudio/best",
+    "outtmpl": "song.mp3",
+    "quiet": True,
+    "noplaylist": True,
+    "extractor_args": {
+        "youtube": {
+            "player_client": ["android"]
+        }
+    }
+}
         ydl.download([f"ytsearch1:{query}"])
 
 
